@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Student-Course-Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/stylesheets/bootstrap.min.css">
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="/assets/stylesheets/styles.css">
+</head>
+<body>
+<% include ./header %>
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <% include ./navigation %>
+    <br><br>
+    <div class="col-sm-8 text-left"> 
+      <h1 class="center">Student Details</h1>
+      <br><br>
+      <table class="table center">
+          <tr id="table-heading" >
+            <th class="center">Student ID</th>
+            <td><%= student.studentId %></td>
+          </tr>
+          <tr>
+            <th class="center">First Name</th>
+            <td><%= student.fName %></td>
+          </tr>
+          <tr>
+            <th class="center">Last Name</th>
+            <td><%= student.lName %></td>
+          </tr>
+          <tr>
+            <th class="center">Department</th>
+            <td><%= student.department %></td>
+          </tr>
+          <tr>
+            <th class="center">Course</th>
+            <td><%= student.course.name %></td>
+          </tr>
+      </table>
+      <form action="/registration/newStudent" class="center">
+        <button class="btn btn-primary center" type="submit">Add New Student</button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

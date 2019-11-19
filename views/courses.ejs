@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Student-Course-Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/stylesheets/bootstrap.min.css">
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="/assets/stylesheets/styles.css">
+</head>
+<body>
+<% include ./header %>
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <% include ./navigation %>
+    <div class="col-sm-8 text-left"> 
+      <br><br>
+      <h1 class="center">Course List</h1>
+      <br><br>
+      <table class="table center" >
+
+          <thead>
+            <th class="center">Course ID</th>
+            <th class="center"> Course Name</th>
+            <th class="center">Credits</th>
+          </thead>
+          <% courses.forEach(course =>{ %>
+            <tr>
+                <td><a href="/registration/course?courseId=<%= course.courseId %>"><%= course.courseId %></a></td>
+                <td><a href="/registration/course?courseId=<%= course.courseId %>"><%= course.name %></a></td>
+                <td><a href="/registration/course?courseId=<%= course.courseId %>"><%= course.credits %></a></td>
+            </tr> 
+          <% }) %>
+      </table>
+      <form action="/registration/newCourse" class="center">
+        <button class="btn btn-primary center" type="submit">Add New Course</button>
+      </form>
+      <hr>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
