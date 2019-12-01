@@ -90,8 +90,7 @@ router.patch("/:courseId", (req, res, next) => {
   const updateObj = {};
   for (const ops of req.body) {
     updateObj[ops.propName] = ops.value;
-  }
-  console.log(updateObj);
+  }  
   Course.update({ courseId: id }, { $set: updateObj }).exec().then(result => {
       res.status(200).json({
           message: 'Course updated',

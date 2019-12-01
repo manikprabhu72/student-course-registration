@@ -27,13 +27,13 @@
           </thead>
           <% courses.forEach(course =>{ %>
             <tr>
-                <td><a href="/registration/course?courseId=<%= course.courseId %>"><%= course.courseId %></a></td>
-                <td><a href="/registration/course?courseId=<%= course.courseId %>"><%= course.name %></a></td>
-                <td><a href="/registration/course?courseId=<%= course.courseId %>"><%= course.credits %></a></td>
+                <td><a href="/course/<%= course.courseId %>"><%= course.courseId %></a></td>
+                <td><a href="/course/<%= course.courseId %>"><%= course.name %></a></td>
+                <td><a href="/course/<%= course.courseId %>"><%= course.credits %></a></td>
             </tr> 
           <% }) %>
       </table>
-      <form action="/registration/newCourse" class="center">
+      <form action="/newCourseForm" class="center">
         <button class="btn btn-primary center" type="submit">Add New Course</button>
       </form>
       <hr>

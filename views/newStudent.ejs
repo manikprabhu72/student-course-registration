@@ -18,7 +18,7 @@
     <div class="col-sm-8 text-left"> 
       <h1 class="center">New Student Entry Form </h1>
       <br><br>
-      <form class="form-horizontal center" action="/registration/addStudent" method="POST">
+      <form class="form-horizontal center" action="/student" method="POST">
             <div class="form-group">
               <label class="control-label col-sm-2" for="fName">First Name</label>
               <div class="col-sm-10">
@@ -41,7 +41,7 @@
                 <label class="control-label col-sm-2" for="courseId">course</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="courseId" name="courseId">
-                        <% console.log(courses);courses.forEach(course => { %>
+                        <% courses.forEach(course => { %>
                             <option value="<%= course.courseId %>"> <%= course.name %> </option>
                         <% }) %>                        
                     </select>

@@ -2,77 +2,78 @@ const express = require("express");
 const router = express.Router();
 const fetch = require('node-fetch');
 
-router.get('/students', function(req,res){
+router.get('/student', function(req,res){
     fetch('http://68.183.144.13:8080/students').then(result => result.json()).then(json => {
         res.render('students',{students: json.students}); 
     });
 });
 
-router.get('/student', function(req,res){
-    let studentId = req.query.studentId;
+router.get('/student/:studentId', function(req,res){
+    let studentId = req.params.studentId;
     fetch('http://68.183.144.13:8080/students/'+studentId).then(result => result.json()).then(json => { 
         res.render('student', {student: json.student})
     });
 });
 
-router.get('/deleteStudent', function(req,res){
-    let studentId = req.query.studentId;
+router.delete('/student/:studentId', function(req,res){
+    console.log('rftgyhuji');
+    let studentId = req.params.studentId;
     fetch('http://68.183.144.13:8080/students/'+studentId,{
         method: 'delete',        
         headers: { 'Content-Type': 'application/json' },
-    }).then(result => result.json()).then(json =>{res.redirect('/registration/students')})
+    }).then(result => result.json()).then(result =>{res.status(200).json(result)})
 });
 
-router.get('/newStudent', function(req,res){
+router.get('/newStudentForm', function(req,res){
     fetch('http://68.183.144.13:8080/courses').then(result => result.json()).then(json => {        
         res.render('newStudent',{courses: json.courses}); 
     });
 });
 
-router.post('/addStudent', function(req,res){
+router.post('/student', function(req,res){
     body = req.body;
     console.log('hjvbjl');
     fetch('http://68.183.144.13:8080/students/',{
         method: 'post',
         body:   JSON.stringify(body),        
         headers: { 'Content-Type': 'application/json' },
-    }).then(result => result.json()).then(json =>{res.redirect('/registration/students')})
+    }).then(result => result.json()).then(json =>{res.redirect('/student')})
 });
 
 //routes for courses
 
-router.get('/courses', function(req,res){
+router.get('/course', function(req,res){
     fetch('http://68.183.144.13:8080/courses').then(result => result.json()).then(json => {
         res.render('courses',{courses: json.courses}); 
     });
 });
 
-router.get('/course', function(req,res){
-    let courseId = req.query.courseId;
+router.get('/course/:courseId', function(req,res){
+    let courseId = req.params.courseId;
     fetch('http://68.183.144.13:8080/courses/'+courseId).then(result => result.json()).then(json => { 
         res.render('course', {course: json.course})
     });
 });
 
-router.get('/deleteCourse', function(req,res){
-    let courseId = req.query.courseId;
+router.delete('/course/:courseId', function(req,res){
+    let courseId = req.params.courseId;
     fetch('http://68.183.144.13:8080/courses/'+courseId,{
         method: 'delete',        
         headers: { 'Content-Type': 'application/json' },
-    }).then(result => result.json()).then(json =>{res.redirect('/registration/courses')})
+    }).then(result => result.json()).then(json =>{res.redirect('/course')})
 });
 
-router.get('/newCourse', function(req,res){      
+router.get('/newCourseForm', function(req,res){      
     res.render('newCourse'); 
 });
 
-router.post('/addCourse', function(req,res){
+router.post('/course', function(req,res){
     body = req.body;
     fetch('http://68.183.144.13:8080/courses/',{
         method: 'post',
         body:   JSON.stringify(body),        
         headers: { 'Content-Type': 'application/json' },
-    }).then(result => result.json()).then(json =>{res.redirect('/registration/courses')})
+    }).then(result => result.json()).then(json =>{res.redirect('/course')})
 });
 
 router.get('/', function(req,res){

@@ -110,7 +110,7 @@ router.delete("/:studentId", (req, res, next) => {
         message: "Student deleted",
         request: {
           type: "GET",
-          url: "http://68.183.144.13:8080/students",
+          url: "http://68.183.144.13:8080/student",
         }
       });
     })

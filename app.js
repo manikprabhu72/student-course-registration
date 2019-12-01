@@ -41,9 +41,9 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
-app.use('/registration', viewsRoutes);
 app.use("/courses", courseRoutes);
 app.use("/students", studentRoutes);
+app.use('/', viewsRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
